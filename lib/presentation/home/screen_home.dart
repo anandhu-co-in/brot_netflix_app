@@ -1,3 +1,4 @@
+import 'package:brot_netflix_app/presentation/widgets/app_bar_widget.dart';
 import 'package:flutter/material.dart';
 
 class ScreenHome extends StatelessWidget {
@@ -5,6 +6,12 @@ class ScreenHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text("Home");
+    return Scaffold(
+      appBar: PreferredSize(
+          child: AppBarWidget(
+            title: 'Home',
+          ),
+          preferredSize: Size.fromHeight(50)),
+    );
   }
 }
