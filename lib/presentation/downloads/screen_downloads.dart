@@ -53,18 +53,24 @@ class ScreenDownloads extends StatelessWidget {
                 ),
                 DownloadsImageWidget(
                   imageUrl: imagelist[0],
-                  margin: EdgeInsets.only(left: 100, bottom: 50),
-                  rotationAngle: 30,
+                  margin: EdgeInsets.only(left: 165, bottom: 50),
+                  rotationAngle: 20,
+                  width: screen_size.width * .4,
+                  height: screen_size.width * .5,
                 ),
                 DownloadsImageWidget(
                   imageUrl: imagelist[1],
-                  margin: EdgeInsets.only(right: 100, bottom: 50),
-                  rotationAngle: -30,
+                  margin: EdgeInsets.only(right: 165, bottom: 50),
+                  rotationAngle: -20,
+                  width: screen_size.width * .4,
+                  height: screen_size.width * .5,
                 ),
                 DownloadsImageWidget(
                   imageUrl: imagelist[2],
                   margin: EdgeInsets.only(right: 0, top: 0),
                   rotationAngle: 0,
+                  width: screen_size.width * .5,
+                  height: screen_size.width * .6,
                 )
               ],
             ),
@@ -93,24 +99,28 @@ class ScreenDownloads extends StatelessWidget {
 
 class DownloadsImageWidget extends StatelessWidget {
   const DownloadsImageWidget(
-      {Key? key, required this.imageUrl, this.margin, this.rotationAngle = 0})
+      {Key? key,
+      required this.imageUrl,
+      this.margin,
+      this.rotationAngle = 0,
+      this.width,
+      this.height})
       : super(key: key);
 
   final imageUrl;
   final double rotationAngle;
   final margin;
+  final width;
+  final height;
 
   @override
   Widget build(BuildContext context) {
-    //This is how to get the size of screen!
-    final screen_size = MediaQuery.of(context).size;
-
     return Transform.rotate(
       angle: rotationAngle * pi / 180,
       child: Container(
         margin: margin,
-        width: screen_size.width * .4,
-        height: screen_size.width * .5,
+        width: width,
+        height: height,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             image: DecorationImage(image: NetworkImage(imageUrl))),
