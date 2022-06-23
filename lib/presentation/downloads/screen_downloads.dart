@@ -44,33 +44,33 @@ class ScreenDownloads extends StatelessWidget {
           Container(
             height: screen_size.width,
             width: screen_size.width,
-            color: Colors.white,
             child: Stack(
               alignment: Alignment.center,
               children: [
                 CircleAvatar(
                   radius: screen_size.width * .35,
+                  backgroundColor: Colors.grey[800],
                 ),
                 DownloadsImageWidget(
                   imageUrl: imagelist[0],
                   margin: EdgeInsets.only(left: 165, bottom: 50),
                   rotationAngle: 20,
-                  width: screen_size.width * .4,
-                  height: screen_size.width * .5,
+                  width: screen_size.width * .30,
+                  height: screen_size.width * .50,
                 ),
                 DownloadsImageWidget(
                   imageUrl: imagelist[1],
                   margin: EdgeInsets.only(right: 165, bottom: 50),
                   rotationAngle: -20,
-                  width: screen_size.width * .4,
-                  height: screen_size.width * .5,
+                  width: screen_size.width * .30,
+                  height: screen_size.width * .50,
                 ),
                 DownloadsImageWidget(
                   imageUrl: imagelist[2],
-                  margin: EdgeInsets.only(right: 0, top: 0),
+                  margin: EdgeInsets.only(right: 0, top: 0, bottom: 5),
                   rotationAngle: 0,
-                  width: screen_size.width * .5,
-                  height: screen_size.width * .6,
+                  width: screen_size.width * .37,
+                  height: screen_size.width * .55,
                 )
               ],
             ),
@@ -122,12 +122,15 @@ class DownloadsImageWidget extends StatelessWidget {
         width: width,
         height: height,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            image: DecorationImage(image: NetworkImage(imageUrl))),
+            borderRadius: BorderRadius.circular(7),
+            image: DecorationImage(
+                fit: BoxFit.cover, image: NetworkImage(imageUrl))),
       ),
     );
   }
 }
 
 //Pending
-//Pass the size as variable to the widget so , i can adjust size of center image separately
+// Add border radios to the setup button
+// Fix the top text blocks, add and use kHeight etc
+// the images should come from imdb thingi
