@@ -27,20 +27,21 @@ class ScreenDownloads extends StatelessWidget {
           preferredSize: Size.fromHeight(50)),
       body: ListView(
         children: [
-          Row(
-            children: [
-              kWidth,
-              Icon(
-                Icons.settings,
-                color: Colors.white,
-              ),
-              kWidth,
-              Text("Smart Downloads")
-            ],
+          kHeight,
+          const _SmartDownloads(),
+          kHeight,
+          const Text(
+            "Introducing Downloads for You",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                fontWeight: FontWeight.bold, fontSize: 20, color: textWhite),
           ),
-          Text("Introducing Downloads for You"),
-          Text(
-              "We'll download personalized selection of movies and shows for you, so there's always something to watch on your device"),
+          kHeight,
+          const Text(
+              "We'll download personalized selection of\nmovies and shows for you, so there's\nalways something to watch on your\ndevice",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontWeight: FontWeight.bold, fontSize: 16, color: textGrey)),
           Container(
             height: screen_size.width,
             width: screen_size.width,
@@ -49,7 +50,7 @@ class ScreenDownloads extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: screen_size.width * .35,
-                  backgroundColor: Colors.grey[800],
+                  backgroundColor: Colors.grey.withOpacity(.5),
                 ),
                 DownloadsImageWidget(
                   imageUrl: imagelist[0],
@@ -75,24 +76,55 @@ class ScreenDownloads extends StatelessWidget {
               ],
             ),
           ),
-          MaterialButton(
-            onPressed: () {},
-            color: blueButtonColour,
-            child: Text(
-              'Set Up',
-              style: TextStyle(fontWeight: FontWeight.bold, color: textWhite),
+          Padding(
+            padding: const EdgeInsets.only(left: 40, right: 40),
+            child: MaterialButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(7)),
+              onPressed: () {},
+              color: blueButtonColour,
+              child: const Text(
+                'Set Up',
+                style: TextStyle(fontWeight: FontWeight.bold, color: textWhite),
+              ),
             ),
           ),
-          MaterialButton(
-            onPressed: () {},
-            color: whiteButtonColour,
-            child: Text(
-              'See What You Can Download',
-              style: TextStyle(fontWeight: FontWeight.bold, color: textBlack),
+          Padding(
+            padding: const EdgeInsets.only(left: 60, right: 60),
+            child: MaterialButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(7)),
+              onPressed: () {},
+              color: whiteButtonColour,
+              child: const Text(
+                'See What You Can Download',
+                style: TextStyle(fontWeight: FontWeight.bold, color: textBlack),
+              ),
             ),
           )
         ],
       ),
+    );
+  }
+}
+
+class _SmartDownloads extends StatelessWidget {
+  const _SmartDownloads({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        kWidth,
+        Icon(
+          Icons.settings,
+          color: Colors.white,
+        ),
+        kWidth,
+        Text("Smart Downloads")
+      ],
     );
   }
 }
@@ -131,6 +163,8 @@ class DownloadsImageWidget extends StatelessWidget {
 }
 
 //Pending
-// Add border radios to the setup button
-// Fix the top text blocks, add and use kHeight etc
-// the images should come from imdb thingi
+// Add border radios to the setup button - Done
+// Fix the top text blocks, add and use kHeight etc - Done
+// the images should come from imdb thingi - Postponed
+
+//Split into sections -
