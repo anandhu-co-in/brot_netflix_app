@@ -8,20 +8,29 @@ import 'package:flutter/material.dart';
 class ScreenDownloads extends StatelessWidget {
   ScreenDownloads({Key? key}) : super(key: key);
 
+  final sections = [const _SmartDownloads(), Section2(), const Section3()];
+
   @override
   Widget build(BuildContext context) {
     //This is how to get the size of screen!
 
     return Scaffold(
-      appBar: PreferredSize(
-          child: AppBarWidget(
-            title: 'Downloads',
-          ),
-          preferredSize: Size.fromHeight(50)),
-      body: ListView(
-        children: [const _SmartDownloads(), Section2(), const Section3()],
-      ),
-    );
+        appBar: const PreferredSize(
+            child: AppBarWidget(
+              title: 'Downloads',
+            ),
+            preferredSize: Size.fromHeight(50)),
+        body: ListView.separated(
+            padding: const EdgeInsets.all(10),
+            itemBuilder: (ctx, index) {
+              return sections[index];
+            },
+            separatorBuilder: (ctx, index) {
+              return const SizedBox(
+                height: 20,
+              );
+            },
+            itemCount: 3));
   }
 }
 
@@ -57,7 +66,7 @@ class Section2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screen_size = MediaQuery.of(context).size;
+    final screenSize = MediaQuery.of(context).size;
     return Column(
       children: [
         const Text(
@@ -73,35 +82,35 @@ class Section2 extends StatelessWidget {
             style: TextStyle(
                 fontWeight: FontWeight.bold, fontSize: 16, color: textGrey)),
         Container(
-          height: screen_size.width,
-          width: screen_size.width,
+          height: screenSize.width * .8,
+          width: screenSize.width,
           child: Stack(
             alignment: Alignment.center,
             children: [
               CircleAvatar(
-                radius: screen_size.width * .35,
+                radius: screenSize.width * .35,
                 backgroundColor: Colors.grey.withOpacity(.5),
               ),
               DownloadsImageWidget(
                 imageUrl: imagelist[0],
-                margin: EdgeInsets.only(left: 165, bottom: 50),
+                margin: const EdgeInsets.only(left: 165, bottom: 50),
                 rotationAngle: 20,
-                width: screen_size.width * .30,
-                height: screen_size.width * .50,
+                width: screenSize.width * .30,
+                height: screenSize.width * .50,
               ),
               DownloadsImageWidget(
                 imageUrl: imagelist[1],
-                margin: EdgeInsets.only(right: 165, bottom: 50),
+                margin: const EdgeInsets.only(right: 165, bottom: 50),
                 rotationAngle: -20,
-                width: screen_size.width * .30,
-                height: screen_size.width * .50,
+                width: screenSize.width * .30,
+                height: screenSize.width * .50,
               ),
               DownloadsImageWidget(
                 imageUrl: imagelist[2],
-                margin: EdgeInsets.only(right: 0, top: 0, bottom: 5),
+                margin: const EdgeInsets.only(right: 0, top: 0, bottom: 5),
                 rotationAngle: 0,
-                width: screen_size.width * .37,
-                height: screen_size.width * .55,
+                width: screenSize.width * .37,
+                height: screenSize.width * .55,
               )
             ],
           ),
@@ -121,14 +130,20 @@ class Section3 extends StatelessWidget {
         SizedBox(
           width: double
               .infinity, //Wrap in sizedbox+widt like this, to make the child to expand, when inside column
-          child: MaterialButton(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(7)),
-            onPressed: () {},
-            color: blueButtonColour,
-            child: const Text(
-              'Set Up',
-              style: TextStyle(fontWeight: FontWeight.bold, color: textWhite),
+          child: Padding(
+            padding: const EdgeInsets.only(
+                left: 10,
+                right:
+                    10), //Added this as the main listview's padding wasn't enough
+            child: MaterialButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(7)),
+              onPressed: () {},
+              color: blueButtonColour,
+              child: const Text(
+                'Set Up',
+                style: TextStyle(fontWeight: FontWeight.bold, color: textWhite),
+              ),
             ),
           ),
         ),
@@ -182,10 +197,3 @@ class DownloadsImageWidget extends StatelessWidget {
     );
   }
 }
-
-//Pending
-// Add border radios to the setup button - Done
-// Fix the top text blocks, add and use kHeight etc - Done
-// the images should come from imdb thingi - Postponed
-
-//Split into sections -
