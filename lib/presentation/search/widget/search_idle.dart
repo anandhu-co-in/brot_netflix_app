@@ -7,20 +7,24 @@ class SearchIdleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
-        Text(
-          "Top Searchesd - In Progress",
+      children: [
+        const Text(
+          "Top Search",
           style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
         ),
-        Text(
-          "In Progress",
-          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-        )
+        // ListView.separated(
+        //     shrinkWrap: true,
+        //     itemBuilder: (ctx, index) {
+        //       return Text('Listviw item');
+        //     },
+        //     separatorBuilder: (ctx, index) {
+        //       return Text('Separator');
+        //     },
+        //     itemCount: 133)
       ],
     );
   }
 }
 
 //TODO
-//Top searched title styling
-//Strat progress with the rest in this page, image list view thingi..
+// Fix the listview overflow issue! i have commented out that part temporarily
