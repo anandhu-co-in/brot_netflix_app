@@ -12,19 +12,22 @@ class SearchIdleWidget extends StatelessWidget {
           "Top Search",
           style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
         ),
-        // ListView.separated(
-        //     shrinkWrap: true,
-        //     itemBuilder: (ctx, index) {
-        //       return Text('Listviw item');
-        //     },
-        //     separatorBuilder: (ctx, index) {
-        //       return Text('Separator');
-        //     },
-        //     itemCount: 133)
+        Expanded(
+          child: ListView.separated(
+              itemBuilder: (ctx, index) {
+                return Text('Listviw item');
+              },
+              separatorBuilder: (ctx, index) {
+                return Text('Separator');
+              },
+              itemCount: 210),
+        )
       ],
     );
   }
 }
 
-//TODO
-// Fix the listview overflow issue! i have commented out that part temporarily
+// NOTE
+// Fixed that listview height issues. But i need to further understand how it works
+// TODO
+// Populate the listview

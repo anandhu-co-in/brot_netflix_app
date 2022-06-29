@@ -12,7 +12,6 @@ class ScreenSearch extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             CupertinoSearchTextField(
               backgroundColor: Colors.grey.withOpacity(.4),
@@ -26,7 +25,7 @@ class ScreenSearch extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            SearchIdleWidget(),
+            Expanded(child: SearchIdleWidget()),
           ],
         ),
       ),
