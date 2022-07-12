@@ -2,6 +2,8 @@ import 'package:brot_netflix_app/core/colours.dart';
 import 'package:brot_netflix_app/core/constants.dart';
 import 'package:flutter/material.dart';
 
+import 'title.dart';
+
 class SearchIdleWidget extends StatelessWidget {
   const SearchIdleWidget({Key? key}) : super(key: key);
 
@@ -11,9 +13,8 @@ class SearchIdleWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         kHeight,
-        const Text(
-          "Top Searches",
-          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+        const SearchesTitle(
+          title: 'Top Searches',
         ),
         kHeight,
         Expanded(
@@ -24,7 +25,7 @@ class SearchIdleWidget extends StatelessWidget {
               separatorBuilder: (ctx, index) {
                 return kHeight;
               },
-              itemCount: 210),
+              itemCount: 10),
         )
       ],
     );
@@ -74,4 +75,3 @@ class TopSearchTileItem extends StatelessWidget {
 
 // NOTE
 // Fixed that listview height issues. But i need to further understand how it works
-// TODO - Start designing the search results screen next

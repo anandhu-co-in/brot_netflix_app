@@ -1,4 +1,5 @@
 import 'package:brot_netflix_app/presentation/search/widget/search_idle.dart';
+import 'package:brot_netflix_app/presentation/search/widget/search_results.dart';
 import 'package:brot_netflix_app/presentation/widgets/app_bar_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,8 @@ class ScreenSearch extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            Expanded(child: SearchIdleWidget()),
+            // Expanded(child: SearchIdleWidget()),
+            Expanded(child: SearchResults())
           ],
         ),
       ),
