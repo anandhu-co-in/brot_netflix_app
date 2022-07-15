@@ -1,3 +1,4 @@
+import 'package:brot_netflix_app/presentation/fast_laughs/widget/video_list_item.dart';
 import 'package:brot_netflix_app/presentation/widgets/app_bar_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -7,11 +8,16 @@ class ScreenFastLaughs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-          child: AppBarWidget(
-            title: 'Fast Laughs',
-          ),
-          preferredSize: Size.fromHeight(50)),
+      body: PageView(
+        scrollDirection: Axis.vertical,
+        children: List.generate(
+            5,
+            (index) => VideoListItem(
+                  clour: index,
+                )),
+      ),
     );
   }
 }
+
+//TODO  - VideoTileItem, stack..

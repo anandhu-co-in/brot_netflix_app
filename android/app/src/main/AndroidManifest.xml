@@ -1,5 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.brot_netflix_app">
+    <!-- Adding below line else the app wont get internet once we take the build   -->
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
    <application
         android:label="brot_netflix_app"
         android:icon="@mipmap/ic_launcher">
