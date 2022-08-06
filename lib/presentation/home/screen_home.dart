@@ -15,3 +15,5 @@ class ScreenHome extends StatelessWidget {
     );
   }
 }
+
+// TODO- Start Home Page Designing - implement that title and horizondal scrolling image rows

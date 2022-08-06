@@ -19,5 +19,3 @@ class ScreenFastLaughs extends StatelessWidget {
     );
   }
 }
-
-//TODO  - VideoTileItem, stack.. (Refer to the design file design.png in lib/presentation/fast_laughs/design.png)
