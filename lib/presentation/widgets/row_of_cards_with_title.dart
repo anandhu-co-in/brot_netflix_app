@@ -18,15 +18,14 @@ class RowOfCardsWithTitle extends StatelessWidget {
             title: title,
           ),
         ),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: const [
-              MainCard(),
-              MainCard(),
-              MainCard(),
-              MainCard(),
-            ],
+        LimitedBox(
+          maxHeight: 200,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: List.generate(
+              5,
+              (index) => MainCard(),
+            ),
           ),
         )
       ],
@@ -50,20 +49,19 @@ class RowOfNumberCardsWithTitle extends StatelessWidget {
             title: title,
           ),
         ),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: const [
-              MainCardWithNumber(
-                number: 1,
+
+        // I had to use this limited box when i changed to Listview, need to explore this widget more
+        // Something related to set limited when parent has unbounded blah blah..
+        LimitedBox(
+          maxHeight: 200,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: List.generate(
+              10,
+              (index) => MainCardWithNumber(
+                number: index + 1,
               ),
-              MainCardWithNumber(
-                number: 2,
-              ),
-              MainCardWithNumber(
-                number: 3,
-              ),
-            ],
+            ),
           ),
         )
       ],

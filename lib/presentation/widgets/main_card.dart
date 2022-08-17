@@ -50,7 +50,7 @@ class MainCardWithNumber extends StatelessWidget {
                     borderRadius: borderRadius1,
                     image: const DecorationImage(
                         image: NetworkImage(
-                            "https://cdn.shopify.com/s/files/1/0057/3728/3618/products/ed4796ac6feff9d2a6115406f964c928_6b200bda-fe71-4900-ad7f-903cdda50dab_240x360_crop_center.progressive.jpg?v=1573587596"),
+                            "https://wallpapers.com/images/high/birds-of-prey-colourful-movie-poster-7dedmbtya9ar8rcr.jpg"),
                         fit: BoxFit.cover)),
               )
             ],
@@ -58,14 +58,14 @@ class MainCardWithNumber extends StatelessWidget {
           Positioned(
               bottom:
                   -30, // TODO - Why doesn't setting this 0 put the number on bottom?
-              left: 0,
+              left: 10,
               child: BorderedText(
                 strokeWidth: 10.0,
                 strokeColor: Colors.white,
                 child: Text(
                   number.toString(),
                   style: const TextStyle(
-                      fontSize: 140,
+                      fontSize: 150,
                       decoration: TextDecoration.none,
                       decorationColor: Colors.white,
                       color: Colors.black),
@@ -76,8 +76,3 @@ class MainCardWithNumber extends StatelessWidget {
     );
   }
 }
-
-// TODO - Start with next home section, replace the main padding of downloads(and other pages if any) with page padding
-// TODO - Change the font family in the number cards
-// TODO - Change to listview (i think) with that loop
-// TODO - Analyse Why doesn't setting this 0 put the number on bottom?

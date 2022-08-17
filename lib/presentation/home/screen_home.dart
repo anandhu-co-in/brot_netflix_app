@@ -10,30 +10,30 @@ class ScreenHome extends StatelessWidget {
     return Scaffold(
       body: Padding(
         padding: paddingPage,
-        child: SingleChildScrollView(
-          child: Column(
-            children: const [
-              RowOfCardsWithTitle(title: "Released in the Past Year"),
-              kHeight,
-              RowOfCardsWithTitle(
-                title: "Trending Now",
-              ),
-              kHeight,
-              RowOfNumberCardsWithTitle(
-                title: "Top 10 in India Today (Number Cards)",
-              ),
-              kHeight,
-              RowOfCardsWithTitle(
-                title: "Tense Dramas",
-              ),
-              kHeight,
-              RowOfCardsWithTitle(
-                title: "South Indian Cinema",
-              ),
-            ],
-          ),
+        child: ListView(
+          children: const [
+            RowOfCardsWithTitle(title: "Released in the Past Year"),
+            kHeight,
+            RowOfCardsWithTitle(
+              title: "Trending Now",
+            ),
+            kHeight,
+            RowOfNumberCardsWithTitle(
+              title: "Top 10 in India Today (Number Cards)",
+            ),
+            kHeight,
+            RowOfCardsWithTitle(
+              title: "Tense Dramas",
+            ),
+            kHeight,
+            RowOfCardsWithTitle(
+              title: "South Indian Cinema",
+            ),
+          ],
         ),
       ),
     );
   }
 }
+
+// TODO - Start with Home Page Top big section (vid 39/ time 4:49)
