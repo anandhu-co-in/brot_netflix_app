@@ -14,7 +14,7 @@ class EveryOnesWatchingTabRow extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
-          "Friends",
+          "Kaduva",
           style: TextStyle(
               fontWeight: FontWeight.bold, fontSize: 15, color: textWhite),
         ),
@@ -34,7 +34,7 @@ class EveryOnesWatchingTabRow extends StatelessWidget {
               decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: NetworkImage(
-                        "https://www.themoviedb.org/t/p/w320_and_h180_bestv2/dlg9ZvKBF6JmxogJx1syGqvXB2D.jpg"),
+                        "https://english.mathrubhumi.com/image/contentid/policy:1.7641860:1656339815/Kaduva%20Poster.jpg"),
                     fit: BoxFit.cover),
               ),
             ),
