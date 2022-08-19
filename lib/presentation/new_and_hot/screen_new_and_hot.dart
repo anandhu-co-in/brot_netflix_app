@@ -1,5 +1,6 @@
 import 'package:brot_netflix_app/core/constants.dart';
-import 'package:brot_netflix_app/presentation/new_and_hot/widget/coming_soon_tab.dart';
+import 'package:brot_netflix_app/presentation/new_and_hot/widget/coming_soon_tab_row.dart';
+import 'package:brot_netflix_app/presentation/new_and_hot/widget/everyone_is_watching.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -64,12 +65,15 @@ class ComingSoonTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: const [
-        kHeight,
-        ComingSoonTabRow(),
-        ComingSoonTabRow(),
-      ],
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 10),
+      child: ListView(
+        children: const [
+          kHeight,
+          ComingSoonTabRow(),
+          ComingSoonTabRow(),
+        ],
+      ),
     );
   }
 }
@@ -81,6 +85,14 @@ class EveryOnesWatchingTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text("TODO-Everyones watchinge");
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 10),
+      child: ListView(
+        children: const [
+          EveryOnesWatchingTabRow(),
+          EveryOnesWatchingTabRow(),
+        ],
+      ),
+    );
   }
 }

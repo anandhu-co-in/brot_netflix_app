@@ -35,7 +35,9 @@ class ComingSoonTabRow extends StatelessWidget {
         ),
         Container(
           height: 420,
-          width: size.width - 50,
+          width: size.width -
+              50 -
+              20, // I had to sustract the padding 10 i have aswell
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
