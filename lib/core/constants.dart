@@ -14,6 +14,8 @@ const paddingPage = EdgeInsets.all(15.0);
 // Radius
 final borderRadius1 = BorderRadius.circular(10);
 
+final borderRadius2 = BorderRadius.circular(20);
+
 // TODO- Why is the final here?
 
 // Created this image as variable so i can add image quickly during development

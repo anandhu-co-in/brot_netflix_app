@@ -16,6 +16,9 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
+          appBarTheme: const AppBarTheme(
+              backgroundColor: Colors
+                  .transparent), //added this while doing new&hot because the appbar showed up as blue
           scaffoldBackgroundColor: backgroundColour,
           primarySwatch: Colors.blue,
           fontFamily: GoogleFonts.montserrat().fontFamily,
