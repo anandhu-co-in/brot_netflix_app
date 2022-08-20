@@ -4,7 +4,6 @@ A netflix ui project
 
 
 
-
 design :
 
 downloads page
@@ -18,3 +17,13 @@ search page - search idle
 search page - search results
 
 ![img_2.png](img_2.png)
+
+
+
+Backend
+-------
+
+tmdb : credentials 
+username : brototype
+password : 1234
+API KEY : 86d69a245a7d86220c2aeab2255e4095
