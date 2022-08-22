@@ -37,17 +37,17 @@ dependencies:
 
   google_fonts: 2.1.0
   video_player: 2.2.17 #added when starting fastlaugh page which has net videos
-  bordered_text: ^2.0.0 # For the numners 1,2,3 in home page under Top 10 in india today
-  flutter_bloc: ^8.0.1
-  json_annotation: ^4.4.0
-  json_serializable: ^6.1.5
+  bordered_text: ^2.0.0 # For the numbers 1,2,3 in home page under Top 10 in india today
+  flutter_bloc: ^8.0.1 # Flutter Widgets that make it easy to implement the BLoC (Business Logic Component) design pattern. Built to be used with the bloc state management package.
+  json_annotation: ^4.4.0 # Classes and helper functions that support JSON code generation via the `json_serializable` package
+  json_serializable: ^6.1.5 # Automatically generate code for converting to and from JSON by annotating Dart classes.
 
 dev_dependencies:
 
   flutter_test:
     sdk: flutter
-  freezed: ^1.1.1
-  build_runner: ^2.1.8
+  freezed: ^1.1.1 # Code generation for immutable classes that has a simple syntax/API without compromising on the features.
+  build_runner: ^2.1.8 # A build system for Dart code generation and modular compilation.
 
 
   # The "flutter_lints" package below contains a set of recommended lints to
