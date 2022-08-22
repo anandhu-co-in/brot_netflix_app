@@ -42,12 +42,18 @@ dependencies:
   json_annotation: ^4.4.0 # Classes and helper functions that support JSON code generation via the `json_serializable` package
   json_serializable: ^6.1.5 # Automatically generate code for converting to and from JSON by annotating Dart classes.
 
+  dartz: ^0.10.1
+  dio:  ^4.0.4
+  get_it: ^7.2.0
+  injectable: ^1.5.3
+
 dev_dependencies:
 
   flutter_test:
     sdk: flutter
   freezed: ^1.1.1 # Code generation for immutable classes that has a simple syntax/API without compromising on the features.
   build_runner: ^2.1.8 # A build system for Dart code generation and modular compilation.
+  injectable_generator: ^1.5.3
 
 
   # The "flutter_lints" package below contains a set of recommended lints to
