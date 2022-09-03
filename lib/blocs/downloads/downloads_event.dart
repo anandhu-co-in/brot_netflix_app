@@ -1,4 +1,6 @@
 part of 'downloads_bloc.dart';
 
-@immutable
-abstract class DownloadsEvent {}
+@freezed
+class DownloadsEvent with _$DownloadsEvent {
+  const factory DownloadsEvent.getDownloadsImage() = _GetDownloadsImage;
+}
