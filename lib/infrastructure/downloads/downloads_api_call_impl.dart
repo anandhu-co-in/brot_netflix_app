@@ -4,7 +4,9 @@ import 'package:brot_netflix_app/domain/core/api_end_points.dart';
 import 'package:brot_netflix_app/domain/core/main_failures.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 
+@LazySingleton(as: DownloadsAPIs)
 class DownloadsAPIImpl implements DownloadsAPIs {
   @override
   Future<Either<MainFailure, List<Downloads>>> geDownloadsImage() async {
