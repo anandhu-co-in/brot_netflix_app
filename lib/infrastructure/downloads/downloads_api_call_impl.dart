@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:brot_netflix_app/domain/Downloads/downloads_api_calls.dart';
 import 'package:brot_netflix_app/domain/Downloads/models/downloads.dart';
 import 'package:brot_netflix_app/domain/core/api_end_points.dart';
@@ -15,17 +17,19 @@ class DownloadsAPIImpl implements DownloadsAPIs {
           await Dio(BaseOptions()).get(ApiEndPoints.downloads);
 
       if (response.statusCode == 200 || response.statusCode == 201) {
-        final List<Downloads> downloadsList = [];
+        final downloadsList = (response.data['results'] as List).map((e) {
+          return Downloads.fromJson(e);
+        }).toList();
 
-        for (final raw in response.data) {
-          downloadsList.add(Downloads.fromJson(raw as Map<String, dynamic>));
-        }
-        print(downloadsList);
+        // log(response.data.toString());
+
+        // print(downloadsList);
         return Right(downloadsList);
       } else {
         return const Left(MainFailure.serverFailure());
       }
-    } catch (_) {
+    } catch (e) {
+      log(e.toString());
       return const Left(MainFailure.clientFailure());
     }
   }

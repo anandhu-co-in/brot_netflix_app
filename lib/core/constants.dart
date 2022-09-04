@@ -20,3 +20,5 @@ final borderRadius2 = BorderRadius.circular(20);
 
 // Created this image as variable so i can add image quickly during development
 String mainImage = "https://img.fruugo.com/product/0/70/99799700_max.jpg";
+
+const imageAppendURL = "https://image.tmdb.org/t/p/w500";

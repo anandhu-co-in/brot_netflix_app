@@ -1,9 +1,11 @@
 import 'dart:math';
 
+import 'package:brot_netflix_app/blocs/downloads/downloads_bloc.dart';
 import 'package:brot_netflix_app/core/colours.dart';
 import 'package:brot_netflix_app/core/constants.dart';
 import 'package:brot_netflix_app/presentation/widgets/app_bar_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ScreenDownloads extends StatelessWidget {
   ScreenDownloads({Key? key}) : super(key: key);
@@ -66,6 +68,14 @@ class Section2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // To call function after this widget is built
+    // WidgetsBinding.instance!.addPostFrameCallback((_) {
+    //   BlocProvider.of<DownloadsBloc>(context).add(const DownloadsEvent.getDownloadsImage());
+    // });
+
+    BlocProvider.of<DownloadsBloc>(context)
+        .add(const DownloadsEvent.getDownloadsImage());
+
     final screenSize = MediaQuery.of(context).size;
     return Column(
       children: [
@@ -81,39 +91,50 @@ class Section2 extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(
                 fontWeight: FontWeight.bold, fontSize: 16, color: textGrey)),
-        Container(
-          height: screenSize.width * .8,
-          width: screenSize.width,
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              CircleAvatar(
-                radius: screenSize.width * .35,
-                backgroundColor: Colors.grey.withOpacity(.5),
-              ),
-              DownloadsImageWidget(
-                imageUrl: imagelist[0],
-                margin: const EdgeInsets.only(left: 165, bottom: 50),
-                rotationAngle: 20,
-                width: screenSize.width * .30,
-                height: screenSize.width * .50,
-              ),
-              DownloadsImageWidget(
-                imageUrl: imagelist[1],
-                margin: const EdgeInsets.only(right: 165, bottom: 50),
-                rotationAngle: -20,
-                width: screenSize.width * .30,
-                height: screenSize.width * .50,
-              ),
-              DownloadsImageWidget(
-                imageUrl: imagelist[2],
-                margin: const EdgeInsets.only(right: 0, top: 0, bottom: 5),
-                rotationAngle: 0,
-                width: screenSize.width * .37,
-                height: screenSize.width * .55,
-              )
-            ],
-          ),
+        BlocBuilder<DownloadsBloc, DownloadsState>(
+          builder: (context, state) {
+            return Container(
+              height: screenSize.width * .8,
+              width: screenSize.width,
+              child: state.isLoading
+                  ? Center(child: Text(state.isLoading.toString()))
+                  : Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        CircleAvatar(
+                          radius: screenSize.width * .35,
+                          backgroundColor: Colors.grey.withOpacity(.5),
+                        ),
+                        DownloadsImageWidget(
+                          imageUrl:
+                              '$imageAppendURL${state.downloads[0].posterPath}',
+                          margin: const EdgeInsets.only(left: 165, bottom: 50),
+                          rotationAngle: 20,
+                          width: screenSize.width * .30,
+                          height: screenSize.width * .50,
+                        ),
+                        DownloadsImageWidget(
+                          imageUrl:
+                              '$imageAppendURL${state.downloads[1].posterPath}',
+                          margin: const EdgeInsets.only(right: 165, bottom: 50),
+                          rotationAngle: -20,
+                          width: screenSize.width * .30,
+                          height: screenSize.width * .50,
+                        ),
+                        DownloadsImageWidget(
+                          imageUrl:
+                              '$imageAppendURL${state.downloads[2].posterPath}',
+                          margin: const EdgeInsets.only(
+                              right: 0, top: 0, bottom: 5),
+                          rotationAngle: 0,
+                          width: screenSize.width * .37,
+                          height: screenSize.width * .55,
+                        ),
+                        Text(state.isLoading.toString())
+                      ],
+                    ),
+            );
+          },
         ),
       ],
     );
@@ -128,8 +149,8 @@ class Section3 extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          width: double
-              .infinity, //Wrap in sizedbox+widt like this, to make the child to expand, when inside column
+          width: double.infinity,
+          //Wrap in sizedbox+widt like this, to make the child to expand, when inside column
           child: Padding(
             padding: const EdgeInsets.only(
                 left: 10,

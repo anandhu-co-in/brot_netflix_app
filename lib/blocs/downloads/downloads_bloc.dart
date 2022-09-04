@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:brot_netflix_app/domain/Downloads/downloads_api_calls.dart';
@@ -26,7 +27,7 @@ class DownloadsBloc extends Bloc<DownloadsEvent, DownloadsState> {
 
       final Either<MainFailure, List<Downloads>> downloadsOption =
           await _downloadsAPIs.geDownloadsImage();
-
+      log(downloadsOption.toString());
       emit(
         downloadsOption.fold(
           (failure) => state.copyWith(
