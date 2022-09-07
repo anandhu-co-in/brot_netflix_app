@@ -97,7 +97,7 @@ class Section2 extends StatelessWidget {
               height: screenSize.width * .8,
               width: screenSize.width,
               child: state.isLoading
-                  ? Center(child: Text(state.isLoading.toString()))
+                  ? Center(child: CircularProgressIndicator())
                   : Stack(
                       alignment: Alignment.center,
                       children: [
@@ -130,7 +130,6 @@ class Section2 extends StatelessWidget {
                           width: screenSize.width * .37,
                           height: screenSize.width * .55,
                         ),
-                        Text(state.isLoading.toString())
                       ],
                     ),
             );

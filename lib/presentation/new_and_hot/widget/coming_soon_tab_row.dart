@@ -50,7 +50,7 @@ class ComingSoonTabRow extends StatelessWidget {
                     decoration: const BoxDecoration(
                         image: DecorationImage(
                             image: NetworkImage(
-                                "http://www.tasteofcinema.com/wp-content/uploads/2018/02/La-La-Land-04-1_.jpg"),
+                                "https://variety.com/wp-content/uploads/2016/10/10-la-la-land.jpg"),
                             fit: BoxFit.cover)),
                   ),
                   Positioned(
