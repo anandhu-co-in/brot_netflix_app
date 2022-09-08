@@ -1,14 +1,24 @@
+import 'package:brot_netflix_app/blocs/search/search_bloc.dart';
 import 'package:brot_netflix_app/presentation/search/widget/search_idle.dart';
 import 'package:brot_netflix_app/presentation/search/widget/search_results.dart';
 import 'package:brot_netflix_app/presentation/widgets/app_bar_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ScreenSearch extends StatelessWidget {
   const ScreenSearch({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // To call function after this widget is built
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      print("Called WidgetsBinding.instance!.addPostFrameCallback");
+      BlocProvider.of<SearchBloc>(context)
+          .add(const SearchEvent.initialize());
+    });
+
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(15.0),
@@ -26,8 +36,8 @@ class ScreenSearch extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            // Expanded(child: SearchIdleWidget()),
-            Expanded(child: SearchResults())
+            Expanded(child: SearchIdleWidget()),
+            // Expanded(child: SearchResults())
           ],
         ),
       ),
