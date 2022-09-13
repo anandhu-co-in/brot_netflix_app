@@ -14,10 +14,8 @@ class ScreenSearch extends StatelessWidget {
     // To call function after this widget is built
     WidgetsBinding.instance!.addPostFrameCallback((_) {
       print("Called WidgetsBinding.instance!.addPostFrameCallback");
-      BlocProvider.of<SearchBloc>(context)
-          .add(const SearchEvent.initialize());
+      BlocProvider.of<SearchBloc>(context).add(const SearchEvent.initialize());
     });
-
 
     return Scaffold(
       body: Padding(
@@ -25,6 +23,11 @@ class ScreenSearch extends StatelessWidget {
         child: Column(
           children: [
             CupertinoSearchTextField(
+              onChanged: (value) {
+                print('Search on change $value');
+                BlocProvider.of<SearchBloc>(context)
+                    .add(SearchEvent.searchMovies(movieQuery: value));
+              },
               backgroundColor: Colors.grey.withOpacity(.4),
               style: TextStyle(color: Colors.white),
               prefixIcon: const Icon(

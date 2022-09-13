@@ -25,7 +25,6 @@ class SearchResponse {
   Map<String, dynamic> toJson() => _$SearchResponseToJson(this);
 }
 
-
 // Initialy this ws generated as different file. But i copied to here, so no i have this one file and correspnding one part file
 
 @JsonSerializable()

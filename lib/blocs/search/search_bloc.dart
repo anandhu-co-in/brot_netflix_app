@@ -66,8 +66,11 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     );
 
     //Search Results State
-    on<_SearchMovies>((event, emit) {
-      _searchAPIs.searchMovies(movieQuerry: event.movieQuery);
+    on<_SearchMovies>((event, emit) async {
+      print("Inside on<_SearchMovies>, searching for ${event.movieQuery}");
+      //TODO - Reached here, continue
+      final _result =
+          await _searchAPIs.searchMovies(movieQuerry: event.movieQuery);
     });
   }
 }
