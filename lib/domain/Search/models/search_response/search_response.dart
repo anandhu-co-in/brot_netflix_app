@@ -30,7 +30,7 @@ class SearchResponse {
 @JsonSerializable()
 class SearchResult {
   @JsonKey(name: 'id')
-  String? id;
+  int? id;
 
   @JsonKey(name: 'original_title')
   String? originalTitle;

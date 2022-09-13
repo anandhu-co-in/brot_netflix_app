@@ -26,7 +26,7 @@ Map<String, dynamic> _$SearchResponseToJson(SearchResponse instance) =>
     };
 
 SearchResult _$SearchResultFromJson(Map<String, dynamic> json) => SearchResult(
-      id: json['id'] as String?,
+      id: json['id'] as int?,
       originalTitle: json['original_title'] as String?,
       posterPath: json['poster_path'] as String?,
     );

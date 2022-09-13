@@ -22,7 +22,6 @@ class SearchIdleWidget extends StatelessWidget {
         Expanded(
           child: BlocBuilder<SearchBloc, SearchState>(
             builder: (context, state) {
-
               if (state.isLoading) {
                 return const Center(
                   child: CircularProgressIndicator(),
@@ -33,7 +32,7 @@ class SearchIdleWidget extends StatelessWidget {
                 );
               } else if (state.idleList.isEmpty) {
                 return const Center(
-                  child: Text("List Empty"),
+                  child: Text("Search Idle List Empty"),
                 );
               }
 

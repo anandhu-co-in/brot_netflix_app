@@ -39,8 +39,18 @@ class ScreenSearch extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            Expanded(child: SearchIdleWidget()),
-            // Expanded(child: SearchResults())
+            Expanded(
+              child: BlocBuilder<SearchBloc, SearchState>(
+                builder: (context, state) {
+                  if (state.searchResultList.isEmpty) {
+                    BlocProvider.of<SearchBloc>(context)
+                        .add(const SearchEvent.initialize());
+                    return SearchIdleWidget();
+                  }
+                  return SearchResults();
+                },
+              ),
+            )
           ],
         ),
       ),

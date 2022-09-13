@@ -36,7 +36,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         }
 
         //get trending
-        print("inside initizlized on<>");
+        print("inside initialized on<>");
 
         emit(const SearchState(
             searchResultList: [],
@@ -66,11 +66,40 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     );
 
     //Search Results State
-    on<_SearchMovies>((event, emit) async {
-      print("Inside on<_SearchMovies>, searching for ${event.movieQuery}");
-      //TODO - Reached here, continue
-      final _result =
-          await _searchAPIs.searchMovies(movieQuerry: event.movieQuery);
-    });
+    on<_SearchMovies>(
+      (event, emit) async {
+        //Display Loading
+        emit(const SearchState(
+            searchResultList: [],
+            idleList: [],
+            isLoading: true,
+            isError: false));
+
+        //Get Result
+        final _result =
+            await _searchAPIs.searchMovies(movieQuerry: event.movieQuery);
+
+        //Update State
+        _result.fold(
+          // In case of Client Failure
+          (MainFailure f) {
+            emit(const SearchState(
+                searchResultList: [],
+                idleList: [],
+                isLoading: false,
+                isError: false));
+          },
+
+          // In case of Success
+          (SearchResponse r) {
+            emit(SearchState(
+                searchResultList: r.results,
+                idleList: [],
+                isLoading: false,
+                isError: false));
+          },
+        );
+      },
+    );
   }
 }
