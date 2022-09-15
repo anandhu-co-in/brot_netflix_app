@@ -30,7 +30,7 @@ class SearchAPIImpl implements SearchAPIs {
         return const Left(MainFailure.serverFailure());
       }
     } catch (e) {
-      log(e.toString());
+      print(e.toString());
       return const Left(MainFailure.clientFailure());
     }
   }

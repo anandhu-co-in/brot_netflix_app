@@ -24,6 +24,12 @@ class ScreenSearch extends StatelessWidget {
           children: [
             CupertinoSearchTextField(
               onChanged: (value) {
+
+                // To trigger is i backspace all the text
+                if (value.isEmpty) {
+                  BlocProvider.of<SearchBloc>(context).add(const SearchEvent.initialize());
+                  return;
+                }
                 print('Search on change $value');
                 BlocProvider.of<SearchBloc>(context)
                     .add(SearchEvent.searchMovies(movieQuery: value));
@@ -43,8 +49,6 @@ class ScreenSearch extends StatelessWidget {
               child: BlocBuilder<SearchBloc, SearchState>(
                 builder: (context, state) {
                   if (state.searchResultList.isEmpty) {
-                    BlocProvider.of<SearchBloc>(context)
-                        .add(const SearchEvent.initialize());
                     return SearchIdleWidget();
                   }
                   return SearchResults();

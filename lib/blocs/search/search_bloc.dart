@@ -69,9 +69,9 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     on<_SearchMovies>(
       (event, emit) async {
         //Display Loading
-        emit(const SearchState(
+        emit(SearchState(
             searchResultList: [],
-            idleList: [],
+            idleList: state.idleList,
             isLoading: true,
             isError: false));
 
@@ -83,9 +83,9 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         _result.fold(
           // In case of Client Failure
           (MainFailure f) {
-            emit(const SearchState(
+            emit(SearchState(
                 searchResultList: [],
-                idleList: [],
+                idleList: state.idleList,
                 isLoading: false,
                 isError: false));
           },
@@ -94,7 +94,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
           (SearchResponse r) {
             emit(SearchState(
                 searchResultList: r.results,
-                idleList: [],
+                idleList: state.idleList,
                 isLoading: false,
                 isError: false));
           },

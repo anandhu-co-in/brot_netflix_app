@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:brot_netflix_app/core/constants.dart';
 
 part 'search_response.g.dart';
 
@@ -43,6 +44,10 @@ class SearchResult {
     this.originalTitle,
     this.posterPath,
   });
+
+  String getPosterPathUrl(){
+    return "$imageAppendURL${this.posterPath}";
+  }
 
   factory SearchResult.fromJson(Map<String, dynamic> json) {
     return _$SearchResultFromJson(json);
