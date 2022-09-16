@@ -5,7 +5,6 @@ import 'package:brot_netflix_app/presentation/search/widget/title.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 class SearchResults extends StatelessWidget {
   const SearchResults({Key? key}) : super(key: key);
 

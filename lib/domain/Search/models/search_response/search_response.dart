@@ -45,7 +45,7 @@ class SearchResult {
     this.posterPath,
   });
 
-  String getPosterPathUrl(){
+  String getPosterPathUrl() {
     return "$imageAppendURL${this.posterPath}";
   }
 
