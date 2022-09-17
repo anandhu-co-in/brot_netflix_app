@@ -29,7 +29,7 @@ class DownloadsAPIImpl implements DownloadsAPIs {
         return const Left(MainFailure.serverFailure());
       }
     } catch (e) {
-      log(e.toString());
+      // log(e.toString());
       return const Left(MainFailure.clientFailure());
     }
   }

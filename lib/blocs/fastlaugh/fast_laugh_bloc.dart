@@ -12,10 +12,24 @@ part 'fast_laugh_bloc.freezed.dart';
 class FastLaughBloc extends Bloc<FastLaughEvent, FastLaughState> {
   FastLaughBloc(DownloadsAPIs _downloadsAPIs)
       : super(FastLaughState.initial()) {
-    on<Initialize>((event, emit) {
-      // Get ternding movies
+    on<Initialize>((event, emit) async {
+      // Show loading;
+      emit(const FastLaughState(
+          videosList: [], isLoading: true, isError: false));
+
+      // Get tending movies
+      final _result = await _downloadsAPIs.geDownloadsImage();
+
+      final _state = _result.fold((l) {
+        return const FastLaughState(
+            videosList: [], isLoading: false, isError: true);
+      }, (resp) {
+        return FastLaughState(
+            videosList: resp, isLoading: false, isError: false);
+      });
 
       // Send to UI
+      emit(_state);
     });
   }
 }
