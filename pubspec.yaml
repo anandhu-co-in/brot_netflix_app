@@ -48,6 +48,8 @@ dependencies:
   injectable: ^1.5.3
   freezed_annotation: 1.1.0
 
+  share_plus: 4.0.3
+
 dev_dependencies:
 
   flutter_test:
