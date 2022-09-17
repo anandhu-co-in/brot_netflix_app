@@ -14,6 +14,4 @@ class Debouncer {
   }
 }
 
-
-
 // FROM https://stackoverflow.com/questions/51791501/how-to-debounce-textfield-onchange-in-dart#comment112862877_52930197

@@ -75,14 +75,22 @@ class TopSearchTileItem extends StatelessWidget {
     return Row(
       children: [
         Container(
-            // color: Colors.red,
-            width: screenWidth * .3,
-            height: screenWidth * .22,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: NetworkImage('$imageAppendURL${item.posterPath}')),
-            )),
+          // color: Colors.red,
+          width: screenWidth * .3,
+          height: screenWidth * .22,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              fit: BoxFit.cover,
+              image: NetworkImage(
+                '$imageAppendURL${item.posterPath}',
+              ),
+              onError: (x, y) {
+                print(
+                    "Error while loading image- need to look for a way to show default image");
+              },
+            ),
+          ),
+        ),
         kWidth,
         Expanded(
           //Without this expand, when long movie names, there is overflow. Why? dont ask me!
