@@ -16,13 +16,6 @@ part 'downloads_state.dart';
 
 part 'downloads_bloc.freezed.dart';
 
-final _videoURLs = [
-  "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
-  "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
-  "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4",
-  "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
-];
-
 @injectable
 class DownloadsBloc extends Bloc<DownloadsEvent, DownloadsState> {
   final DownloadsAPIs _downloadsAPIs;

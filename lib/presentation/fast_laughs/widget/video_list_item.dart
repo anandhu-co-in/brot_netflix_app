@@ -1,6 +1,15 @@
 import 'package:brot_netflix_app/core/constants.dart';
 import 'package:brot_netflix_app/domain/Downloads/models/downloads.dart';
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:video_player/video_player.dart';
+
+final _dummyVideoURLs = [
+  "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+  "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+  "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4",
+  "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+];
 
 // Inherited widget class created for passing data to child widgets if i am not wrong
 class VideoListItemInheritedWidget extends InheritedWidget {
@@ -31,9 +40,15 @@ class VideoListItem extends StatelessWidget {
     final posterPath =
         VideoListItemInheritedWidget.of(context)?.movieData.posterPath;
 
+    final videoUrl = _dummyVideoURLs[index % _dummyVideoURLs.length];
+
     return Stack(
       children: [
-        Container(color: Colors.grey),
+        // Container(color: Colors.grey),
+        VideoPlayerWidget(
+          videoUrl: videoUrl,
+          onStateChanged: (bool isPlaying) {},
+        ),
         Positioned(
           bottom: 0,
           left: 0,
@@ -82,9 +97,20 @@ class VideoListItem extends StatelessWidget {
                       label: 'My List',
                     ),
                     kHeight,
-                    const VideoListCirlceButton(
-                      icon: Icons.share,
-                      label: 'Share',
+                    GestureDetector(
+                      onTap: () {
+                        final movieName =
+                            VideoListItemInheritedWidget.of(context)
+                                ?.movieData
+                                .title;
+                        print("Clicked share icon");
+                        Share.share(
+                            "Movie name $movieName - replace this url/description/link whatever as you required");
+                      },
+                      child: const VideoListCirlceButton(
+                        icon: Icons.share,
+                        label: 'Share',
+                      ),
                     ),
                     kHeight,
                     const VideoListCirlceButton(
@@ -112,22 +138,63 @@ class VideoListCirlceButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        print("TODO - Click of " + label + " not implemented");
-      },
-      child: Column(
-        children: [
-          Icon(
-            icon,
-            color: Colors.white,
-          ),
-          const SizedBox(
-            height: 4,
-          ),
-          Text(label)
-        ],
-      ),
+    return Column(
+      children: [
+        Icon(
+          icon,
+          color: Colors.white,
+        ),
+        const SizedBox(
+          height: 4,
+        ),
+        Text(label)
+      ],
     );
+  }
+}
+
+class VideoPlayerWidget extends StatefulWidget {
+  final String videoUrl;
+  final void Function(bool isPlaying) onStateChanged;
+
+  const VideoPlayerWidget(
+      {Key? key, required this.videoUrl, required this.onStateChanged})
+      : super(key: key);
+
+  @override
+  State<VideoPlayerWidget> createState() => _VideoPlayerWidgetState();
+}
+
+class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
+  late VideoPlayerController _videoPlayerController;
+
+  @override
+  void initState() {
+    _videoPlayerController = VideoPlayerController.network(widget.videoUrl);
+    _videoPlayerController.initialize().then((value) {
+      setState(() {});
+      _videoPlayerController.play();
+    });
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      height: double.infinity,
+      child: _videoPlayerController.value.isInitialized
+          ? VideoPlayer(_videoPlayerController)
+          : const Center(
+              child: CircularProgressIndicator(),
+            ),
+    );
+  }
+
+  @override
+  void dispose() {
+    print("Disposing video player controlller");
+    _videoPlayerController.dispose();
+    super.dispose();
   }
 }
