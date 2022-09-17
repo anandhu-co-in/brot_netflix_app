@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'blocs/fastlaugh/fast_laugh_bloc.dart';
 import 'blocs/search/search_bloc.dart';
 
 Future<void> main() async {
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (ctx) => getIt<DownloadsBloc>()),
         BlocProvider(create: (ctx) => getIt<SearchBloc>()),
+        BlocProvider(create: (ctx) => getIt<FastLaughBloc>()),
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
