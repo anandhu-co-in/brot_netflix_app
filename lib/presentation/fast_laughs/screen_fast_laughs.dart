@@ -33,12 +33,17 @@ class ScreenFastLaughs extends StatelessWidget {
               child: Text("VideoList is empty"),
             );
           } else {
+            print(state.videosList.length);
             return PageView(
               scrollDirection: Axis.vertical,
               children: List.generate(
-                5,
-                (index) => VideoListItem(
-                  clour: index,
+                state.videosList.length,
+                (index) => VideoListItemInheritedWidget(
+                  widget: VideoListItem(
+                    key: Key(index.toString()),
+                    index: index,
+                  ),
+                  movieData: state.videosList[index],
                 ),
               ),
             );
