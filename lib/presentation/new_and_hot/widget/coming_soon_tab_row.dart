@@ -102,18 +102,22 @@ class ComingSoonTabRow extends StatelessWidget {
                 ],
               ),
               kHeight,
-              const Text("Tall Girl 2",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      color: textWhite)),
+              const Text(
+                "Tall Girl 2",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: textWhite),
+              ),
               kHeight,
               const Text(
-                  "Jodi Kreyman deals with her newfound popularity. Her miscommunications, however, start causing rifts with those around her and now she really needs to \"stand tall.\"",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 10,
-                      color: Colors.grey))
+                "Jodi Kreyman deals withJodi Kreyman deals with her newfound popularity. Her Jodi Kreyman deals with her newfound popularity. Her Jodi Kreyman deals with her newfound popularity. Her Jodi Kreyman deals with her newfound popularity. Her  her newfound popularity. Her miscommunications, however, start causing rifts with those around her and now she really needs to \"stand tall.\"",
+                maxLines: 4,
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 10,
+                    color: Colors.grey),
+              )
             ],
           ),
         )
